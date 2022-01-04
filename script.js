@@ -1,6 +1,6 @@
 // 1
 const ONE_CAN = 16;
-let howManyCanYouNeedToPaintAnOffice = (L, W, H) => Math.ceil(((L + W) * H) / ONE_CAN);
+let howManyCanYouNeedToPaintAnOffice = (L, W, H) => Math.ceil(((L + W) * H) * 2 / ONE_CAN);
 
 
 //2
