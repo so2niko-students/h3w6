@@ -24,7 +24,14 @@ const fraudMoneyMaking = (A1, A2, A3, B1, B2, B3) => {
   for (let i = 0; i < 3; i++) {
     moneyAmount += priceArray[i] * bucketsArray[i];
   }
-  if (A1 < 100 && A2 < 100 && A3 < 100 && B1 < 100 && B2 < 100 && B3 < 100) {
+  if (
+    A1 <= 100 &&
+    A2 <= 100 &&
+    A3 <= 100 &&
+    B1 <= 100 &&
+    B2 <= 100 &&
+    B3 <= 100
+  ) {
     return moneyAmount;
   } else {
     return `Incorrect input values`;
@@ -35,7 +42,7 @@ const fraudMoneyMaking = (A1, A2, A3, B1, B2, B3) => {
 const isHappyTicket = (num) => {
   let firstSum = 0;
   let secondSum = 0;
-  let splitNumber = num.toString().split("");
+  const splitNumber = num.toString().split("");
   const n = splitNumber.length;
   for (let i = 0; i < n / 2; i++) {
     firstSum += +splitNumber[i];
