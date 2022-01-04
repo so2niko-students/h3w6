@@ -1,9 +1,10 @@
+// 1
 const ONE_CAN = 16;
 let howManyCanYouNeedToPaintAnOffice = (L, W, H) => Math.ceil(((L + W) * H) / ONE_CAN);
 
 
-
-let batterChoise = function(A1, A2, A3, B1, B2, b3) {
+//2
+let batterChoiсe = function(A1, A2, A3, B1, B2, b3) {
         let validation = Math.max.apply(Math, [...arguments]) <= 100;
         if (validation) {
             let prise = [...arguments].slice(0, 3).sort((a, b) => a - b).reverse();
@@ -21,6 +22,8 @@ let batterChoise = function(A1, A2, A3, B1, B2, b3) {
     }
     // console.log(batterChoise(1, 2, 3, 4, 5, 100))
 
+
+//3
 Array.prototype.sum = function() {
     return this.reduce((total, item) => { return total += Number(item) }, 0)
 }
