@@ -1,21 +1,23 @@
 function correctTicketNumber(N) {
-  let str = String(N);
-  if (str.length == 5) {
-    str = "0" + str;
-  }
-  if (str.length == 4) {
-    str = "00" + str;
-  }
-  if (str.length == 3) {
-    str = "000" + str;
-  }
-  if (str.length == 2) {
-    str = "0000" + str;
-  }
-  if (str.length == 1) {
-    str = "00000" + str;
-  }
-  return str;
+  const nulls = ['000000', '00000', '0000', '000', '00', '0', ''];
+  return `${ nulls[String(N).length] }${ N }`;
+  // let str = String(N);
+  // if (str.length == 5) {
+  //   str = "0" + str;
+  // }
+  // if (str.length == 4) {
+  //   str = "00" + str;
+  // }
+  // if (str.length == 3) {
+  //   str = "000" + str;
+  // }
+  // if (str.length == 2) {
+  //   str = "0000" + str;
+  // }
+  // if (str.length == 1) {
+  //   str = "00000" + str;
+  // }
+  // return str;
 }
 
 function luckyTicket(N) {
