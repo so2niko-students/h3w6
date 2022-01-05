@@ -1,0 +1,20 @@
+.wrapper {
+    min-width: 400px;
+    margin: 30px auto;
+    font-family: Roboto,sans-serif;
+}
+
+.calculating__choose, 
+.calculating__subtitle, 
+.calculating__result, 
+.calculating__total {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+input {
+    padding: 5px 10px;
+    width: 150px;
+    margin: 0 10px;
+}
