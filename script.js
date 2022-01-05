@@ -11,9 +11,7 @@ function goldenSand(A1, A2, A3, B1, B2, B3) {
 
    let sum = 0;
    for (let i = 0; i < 3; i++) {
-      if (sandsArr[i] >= containersArr[i]) {
-         sum += containersArr[i] * sandsArr[i];
-      }
+      sum += containersArr[i] * sandsArr[i];
    }
    return sum;
 }
