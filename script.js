@@ -6,8 +6,9 @@ let howManyCanYouNeedToPaintAnOffice = function(L, W, H) {
         return Math.ceil((((L + W) * H) * 2) / ONE_CAN);
     }
     return new Error('Data is incorrect!')
-}
 
+}
+console.log(howManyCanYouNeedToPaintAnOffice(1, 999, 999));
 
 //2
 let batterChoiсe = function(A1, A2, A3, B1, B2, b3) {
@@ -49,4 +50,4 @@ let isItHappyTicket = function(number) {
     return new Error(`You entered incorrect data!`);
 }
 
-console.log(isItHappyTicket(1236));
+// console.log(isItHappyTicket(1236));
