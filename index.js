@@ -31,3 +31,19 @@ const findShort = str => str.split(' ').sort((a, b) => a.length - b.length)[0].l
 
 // Task 4
 
+const str2 = 'is2 Thi1s T4est 3a';
+function correctSentence(str2) {
+    let newArr2 = [];
+    str2 = str2.split(' ');
+
+    for (let i = 0; i < str2.length; i++) {
+    	for (let j = 0; j < str2[i].length; j++) {
+    		let inx = str2[i].match(/\d+/);
+    		newArr2[inx - 1] = str2[i];
+    	}
+    }
+    const newStr2 = newArr2.join(' ');
+    console.log(newStr2);
+
+}
+correctSentence(str2);
