@@ -1,6 +1,12 @@
 // 1
-const ONE_CAN = 16;
-let howManyCanYouNeedToPaintAnOffice = (L, W, H) => Math.ceil(((L + W) * H) * 2 / ONE_CAN);
+let howManyCanYouNeedToPaintAnOffice = function(L, W, H) {
+    const ONE_CAN = 16;
+    let validArr = [...arguments].sort((a, b) => a - b);
+    if (validArr[0] > 0 && validArr[validArr.length - 1] <= 1000) {
+        return Math.ceil((((L + W) * H) * 2) / ONE_CAN);
+    }
+    return new Error('Data is incorrect!')
+}
 
 
 //2
