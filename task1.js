@@ -10,7 +10,6 @@ function sumMin(arr) {
   //console.log(sum);
   //   for (let i = 0; i < arr.length; i++) {
   //     let min = (Math.min(...arr[i]));
-  //     let max = (Math.min(...arr[i]));
   //     console.log(arr[i]);
   //     console.log(min);
   //     console.log(arr2);
