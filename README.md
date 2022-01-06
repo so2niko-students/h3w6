@@ -1,41 +1,37 @@
-**HW 2022-01-04**
+Task 1:
+Sum of Minimums! Given a 2D array of size m \* n. Your task is to write a function to find the sum of minimum value in each row. For Example:
 
-# Task 1:
+[
+[1, 2, 3, 4, 5], // minimum value of row is 1
+[5, 6, 7, 8, 9], // minimum value of row is 5
+[20, 21, 34, 56, 100] // minimum value of row is 20
+]
+So, the function should return 26 because sum of minimums is as 1 + 5 + 20 = 26 Note: You will be always given non-empty array containing Positive values. Examples
 
-**Ремонт**
-Ваш любимый дядя – директор фирмы, которая делает евроремонты в офисах. В связи с финансово-экономическим кризисом, дядюшка решил оптимизировать свое предприятие.
-Давно ходят слухи, что бригадир в дядюшкиной фирме покупает лишнее количество стройматериалов, а остатки использует для отделки своей новой дачи. Ваш дядя заинтересовался, сколько в действительности банок краски необходимо для покраски стен в офисе длиной L метров, шириной – W и высотой – H, если одной банки хватает на 16м2, а размерами дверей и окон можно пренебречь? Заказов много, поэтому дядя попросил написать программу, которая будет все это считать.
+sumMin([[1,2,3],[33,22,55],[16,42,345,79,1]]) //1 + 22 + 1 = 24
+sumMin([[11,2],[323,2,55]]) //2 + 2 = 4
+sumMin([[13,11,2],[3,23,23,55],[23,55,3,77],[39,7,89,94]]) //2 + 3 + 3 + 7 = 15
+Task 2:
+Two Oldest Ages The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age]. The order of the numbers passed in could be any order. The array will always include at least 2 items. For example:
 
-**Входные данные**
-Пользователь вводит с клавиатуры три натуральных числа L, W, H – длину, ширину и высоту офиса в метрах соответственно, каждое из которых не превышает 1000.
+twoOldestAges( [1, 2, 10, 8] ) // should return [8, 10]
+Task 3:
+Shortest Word Simple, given a string of words, return the length of the shortest word(s). String will never be empty and you do not need to account for different data types. Examples
 
-**Выходные данные**
-Вывести на экран одно целое число – минимальное количество банок краски, необходимых для покраски стен в офисе.
+"bitcoin take over the world maybe who knows perhaps" --> 3
+"turns out random test cases are easier than writing out basic ones" --> 3
+"lets talk about javascript the best language" --> 3
+"i want to travel the world writing code one day" --> 1
+"Lets all go on holiday somewhere very cold" --> 2
+Task 4:
+Your order, please Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
 
-# Task 2:
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 
-**Золотой песок**
-Сотрудники завода по производству золотого песка из воздуха решили поправить свое финансовое положение. Они пробрались на склад завода, где хранился золотой песок трех видов. Один килограмм золотого песка первого вида они смогли бы продать за A1 рублей, второго вида – за A2 рублей, а третьего вида – за A3 рублей. Так получилось, что у сотрудников оказалось с собой только три емкости: первая была рассчитана на B1 килограмм груза, вторая на B2 килограмм, а третья на B3 килограмм. Им надо было заполнить полностью все емкости таким образом, чтобы получить как можно больше денег за весь песок. При заполнении емкостей нельзя смешивать песок разных видов, то есть, в одну емкость помещать более одного вида песка, и заполнять емкости песком так, чтобы один вид песка находился более чем в одной емкости.
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
 
-Требуется написать программу, которая определяет, за какую сумму предприимчивые сотрудники смогут продать весь песок в случае наилучшего для себя заполнения емкостей песком.
+Examples
 
-**Входные данные**
-Пользователь вводит с клавиатуры 6 натуральных чисел A1, A2, A3, B1, B2, B3. Все числа не превосходят 100.
-
-**Выходные данные**
-Вывести на экран единственное целое число – сумму в рублях, которую смогут сотрудники заработать в случае наилучшего для себя заполнения емкостей песком.
-
-
-# Task 3:
-
-**Счастливый билет**
-Вы пользуетесь общественным транспортом? Вероятно, вы расплачивались за проезд и получали билет с номером. Счастливым билетом называют такой билет с шестизначным номером, где сумма первых трех цифр равна сумме последних трех. Т.е. билет с номером 385916 – счастливый, т.к. 3+8+5=9+1+6. Вам требуется написать программу, которая проверяет счастливость билета.
-
-**Входные данные**
-Пользователь вводит одно целое число N (0 ≤ N < 10 ** 6).
-
-**Выходные данные**
-Нужно вывести «YES», если билет с номером N счастливый и «NO» в противном случае.
-
-
-
+"is2 Thi1s T4est 3a" --> "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2" --> "Fo1r the2 g3ood 4of th5e pe6ople"
+"" --> ""
