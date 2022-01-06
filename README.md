@@ -1,5 +1,6 @@
 
 
+
 # Task 1:
 **Count IP Addresses**
 Implement a function that receives two IPv4 addresses, and returns the number of addresses between them (including the first one, excluding the last one).
@@ -87,3 +88,96 @@ Return *YES*, if Vasya can sell a ticket to every person and give change with th
     tickets([25, 25, 50]) // => YES
     tickets([25, 100]) // => NO. Vasya will not have enough money to give change to 100 dollars
     tickets([25, 25, 50, 50, 100]) // => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)
+
+_______________________
+
+# Task 6:
+
+**Quipu Calculator**
+The Quipu is the numbering system of the ancient Incas. A number is represented by knots in a string, using a positional representation (in base-10).
+The representation of 123: one knot + space + two knots + space + three knots
+Zeros are represented using a blank space. (leading zeros are not allowed)
+@ is a knot and ~ is a space.
+
+    123 => @~@@~@@@
+    20 => @@~~
+
+Create a method that calculates mathematical expressions in quipu format.
+*Input*
+A string representing a mathematical expression with operands in the quipu format above, separated by the plus [+] or minus [-] or division [/] or multiplication [*] sign.
+
+    @~@ => 11
+    @~~@ => 101
+    @~~~@ => 1001
+
+*Output*
+A string representing the result of the mathematical expression in quipu format.
+*Example*:
+
+    calculate("@~@@*@@")
+    => "@@~@@@@"
+    calculate("@~@@+@@~~")
+    => "@@@~@@"
+
+
+_________________________
+
+# Task 7:
+
+**Find the Partition with Maximum Product Value**
+You are given a certain integer, n, n > 0. You have to search the partition or partitions, of n, with maximum product value.
+Let'see the case for n = 8.
+
+    Partition                 Product
+    [8]                          8
+    [7, 1]                       7
+    [6, 2]                      12
+    [6, 1, 1]                    6
+    [5, 3]                      15
+    [5, 2, 1]                   10
+    [5, 1, 1, 1]                 5
+    [4, 4]                      16
+    [4, 3, 1]                   12
+    [4, 2, 2]                   16
+    [4, 2, 1, 1]                 8
+    [4, 1, 1, 1, 1]              4
+    [3, 3, 2]                   18 <---partition with maximum product value
+    [3, 3, 1, 1]                 9
+    [3, 2, 2, 1]                12
+    [3, 2, 1, 1, 1]              6
+    [3, 1, 1, 1, 1, 1]           3
+    [2, 2, 2, 2]                16
+    [2, 2, 2, 1, 1]              8
+    [2, 2, 1, 1, 1, 1]           4
+    [2, 1, 1, 1, 1, 1, 1]        2
+    [1, 1, 1, 1, 1, 1, 1, 1]     1
+
+So our needed function will work in that way
+
+    findPartMaxProd(8) --> [[3, 3, 2], 18]
+
+If there are more than one partition with maximum product value, the function should output the partitions in a length sorted way.
+
+    findPartMaxProd(10) --> [[4, 3, 3], [3, 3, 2, 2], 36]
+
+Enjoy it!
+*Tests*:
+
+     describe("Example Tests", function(){
+       it("Small Integers", function(){
+        Test.assertSimilar(findPartMaxProd(8), [[3, 3, 2], 18]);
+        Test.assertSimilar(findPartMaxProd(10), [[4, 3, 3], [3, 3, 2, 2], 36]);
+       });
+     });
+
+______________________
+# *Task 7 variant 2:
+**Бойся драконов**
+
+Есть предание, что драконы бывают многоголовы. И чем голов больше у дракона, тем большая сила подвластна ему. Но страшнее дракона может быть только стая драконов. И страшна тая стая тем, что сила ее не суммируется от голов драконов, а преумножается. Если в стае той 3 дракона с 2, 4 и 5 головами, то силушкой общей они могут посоперничать с мифическим 40-головым драконищем иродовым. Тому Вам, волхвы уважаемые, предстоит написать заклинание мудрёное. Лазутчики головы посчитают издалека, а ваша задача сказать, какова может быть максимальна сила той стаи. К чему готовиться защитникам бравым, каковы заклинания готовить волшебникам седовласым.
+
+*Входные данные:*
+Число - количество голов предполагаемой стаи от 2 до 20
+
+*Выходные данные:*
+Число - максимальная сила стаи
