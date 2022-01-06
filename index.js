@@ -46,6 +46,7 @@ const sortNumberedWords = (str) => {
     for (let i = 0; i < n; i++) {
       if (wordsArr[i].includes(j + 1)) {
         sortedArr[j] = wordsArr[i];
+        break;
       }
     }
   }
