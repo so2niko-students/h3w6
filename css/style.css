@@ -1,0 +1,54 @@
+.wrapper {
+  margin: 35px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ligth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff2e6;
+  height: 120px;
+  width: 300px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  margin-right: 20px;
+}
+
+.next {
+  border-radius: 10px;
+  padding: 0 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.color {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.color:not(:last-child) {
+  margin-right: 10px;
+}
+
+.color:nth-child(1).active {
+  background-color: red;
+}
+
+.color:nth-child(2).active {
+  background-color: orange;
+}
+
+.color:nth-child(3).active {
+  background-color: green;
+}
