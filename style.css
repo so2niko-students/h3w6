@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: bisque;
+    display:flex;
+    flex-direction: row;
+    margin: 20px;
+    min-height: 100vh;
+}
+
+.button {
+    border-radius: 10px;
+    height: 100px;
+    margin-left: 20px;
+    width: 70px;
+}
+
+.container {
+    align-items: center;
+    background-color: bisque;
+    border : solid;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: row;
+    height: 100px;
+    justify-content: space-around;
+    padding: 20px 0;
+    width : 300px;
+}
+
+.circle {
+    background-color: grey;
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+}
+
+.circle.red {
+    background-color: red;
+}
+.circle.yellow {
+    background-color: yellow;
+}
+.circle.green {
+    background-color: green;
+}
