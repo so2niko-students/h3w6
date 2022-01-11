@@ -42,8 +42,8 @@ function numberToStr(number) {
     }
 
     let arr = [];
-    let ssdfsdf = number.length - 1
-    for (let i = 0, j = 10 ** ssdfsdf; i < number.length; i++, j = j / 10) {
+    let rank = number.length - 1
+    for (let i = 0, j = 10 ** rank; i < number.length; i++, j = j / 10) {
         arr.push(number[i] * j)
 
     }
@@ -62,18 +62,10 @@ function numberToStr(number) {
     return result;
 
 }
-console.log(numberToStr('35'))
-console.log(numberToStr('27'))
-console.log(numberToStr('25'))
-console.log(numberToStr('11'))
-console.log(numberToStr('9'))
-console.log(numberToStr('19'))
-console.log(numberToStr('101'))
-console.log(numberToStr('111'))
+
 
 //2
 function getStaticStr(str) {
-    //й: количество букв, количество цифр и количество других знаков.
     const letters = str.match(/[a-zA-Z]/gi).length;
     const numbers = str.match(/[0-9]/gi).length;
     const symbols = str.length - (letters + numbers);
@@ -82,14 +74,26 @@ function getStaticStr(str) {
 
 
 //3
-function chengeStr() {
+function chengeStr(str) {
 
+    const checkUpper = /[A-Z]/;
+    const checkLow = /[a-z]/;
+    const checkNumner = /[\d]/;
+    let result = str.split('').reduce((acc, item) => {
 
+        if (checkUpper.test(item)) {
+            return acc.concat(item.toLowerCase());
+        }
+        if (checkLow.test(item)) {
+            return acc.concat(item.toUpperCase());
+        }
+        if (checkNumner.test(item)) {
+            return acc.concat('_');
+        }
+        return acc.concat(item);
 
-    function replacer(match, p1, p2, p3, offset, string) {
-        // p1 - не цифры, p2 - цифры, p3 - не буквы и не цифры
-        return [p1, p2, p3].join(' - ');
-    }
-    var newString = 'abc345#$*%'.replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+    }, '');
+
+    return result;
+
 }
-chengeStr();

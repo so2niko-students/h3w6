@@ -1,5 +1,6 @@
 let arr = ['Яблоко', 'Банан', 'Ананас'];
 
+
 const reduceLikeMap = arr.reduce((acc, item) => {
     return acc.concat(item[0])
 }, []);
