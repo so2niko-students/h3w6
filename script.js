@@ -70,6 +70,8 @@ const rowStatistics = function(string) {
     return statistics;
 }
 
+console.log(rowStatistics(' '))
+
 // console.log(rowStatistics('asdasd'))
 //3
 const transformString = function(string) {
@@ -196,3 +198,10 @@ const findPartMaxProd = function(num) {
         }, [])
     }
     // console.log(findPartMaxProd(10))
+
+
+//next lvl solution
+
+const findPartProd_2 = function(n) {
+
+}
