@@ -53,23 +53,22 @@ const displayStrStats = (str) => {
   return `count of letters - ${letterCount}, count of numbers - ${numberCount}, count of special chars - ${specialCharCount}`;
 };
 
-// const replaceLetter = (str) => {
-//   let res = "";
-//   for (let i = 0; i < str.length; i++) {
-//     if (typeof +str[i] === "number") {
-//       console.log(str[i]);
-//       res += "_";
-//     } else {
-//       if (str[i] === str[i].toLowerCase()) {
-//         res += str[i].toUpperCase();
-//       }
-//       if (str[i] === str[i].toUpperCase()) {
-//         res += str[i].toLowerCase();
-//       }
-//     }
-//   }
-//   return res;
-// };
+const replaceLetter = (str) => {
+  let res = "";
+  for (let i = 0; i < str.length; i++) {
+    if (/\d/gi.test(str[i])) {
+      res += "_";
+    } else {
+      if (str[i] === str[i].toLowerCase()) {
+        res += str[i].toUpperCase();
+      }
+      if (str[i] === str[i].toUpperCase()) {
+        res += str[i].toLowerCase();
+      }
+    }
+  }
+  return res;
+};
 
 // Task 2 - Traffic lights
 const toggleButton = document.querySelector(".color-toggler");
