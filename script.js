@@ -79,4 +79,4 @@ console.log(['Яблоко', 'Банан', 'Ананас'].reduce((acc, el) =>
 //3
 //['Яблоко', 'Банан', 'Ананас'].forEach((el, i, arr) => arr[i] = `${i + 1}: ${el};`)
 console.log(['Яблоко', 'Банан', 'Ананас'].reduce((acc, el, i, arr) =>
-   acc + `${i + 1}: ${el}; `, ''));
+   acc.concat(`${i + 1}: ${el};`), []));
