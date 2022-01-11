@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traffic lights</title>
+
+    <style>
+
+        .wrapper {
+            display: flex;
+
+            margin: 0 auto;
+            justify-content: space-between;
+            width: 550px;
+        }
+
+        .container {
+            width: 400px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+           
+            background-color: antiquewhite;
+            padding: 10px 20px;
+            border: 1px solid grey;
+            border-radius: 30px;;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: #aaa;
+            border-radius: 50%;
+        }
+
+        .btn {
+            width: 90px;
+            border-radius: 20px;
+        }
+
+        .circle.red {
+            background-color: DarkRed;
+            box-shadow: 0 0 15px DarkRed;
+        }
+
+        .circle.yellow {
+            background-color: yellow;
+            box-shadow: 0 0 15px yellow;
+        }
+
+        .circle.green {
+            background-color: DarkGreen;
+            box-shadow: 0 0 15px DarkGreen;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="circle red" color="red"></div>
+            <div class="circle" color="yellow"></div>
+            <div class="circle" color="green"></div>
+        </div>
+        <button class="btn">NEXT</button>
+    </div>
+    
+    <script>
+        const btn = document.querySelector('.btn');
+        const circles = document.querySelectorAll('.circle');
+        let activeLight = 0;
+        btn.addEventListener('click', changeLight);
+
+        function changeLight() {
+            circles[activeLight].className = 'circle';
+            activeLight++;
+            
+            if (activeLight > 2) {
+                activeLight = 0;
+            }
+
+            const currentLight = circles[activeLight];
+            currentLight.classList.add(currentLight.getAttribute('color'));
+        }
+
+    </script>
+</body>
+</html>
