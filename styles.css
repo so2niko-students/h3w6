@@ -1,0 +1,119 @@
+/* ============================= =================================
+                          CSS VARIABLES
+============================= ================================= */
+:root {
+  --dark: #333333;
+  --bg-dark: #202020;
+  --red: #501717;
+  --yellow: #b2b300;
+  --green: #00b300;
+  --bold: 700;
+  --regular: 400;
+}
+
+/* ============================= =================================
+                          Fonts import
+============================= ================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/* ============================= =================================
+                         Global Styles
+============================= ================================= */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: inherit;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trafic-lights {
+  display: flex;
+  gap: 2em;
+  background-color: var(--dark);
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+.red,
+.green,
+.yellow {
+  min-height: 100px;
+  min-width: 100px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.active-red {
+  background-color: #FF0000;
+  box-shadow: 0 0 6em #ff3333;
+}
+
+.active-yellow {
+  background-color: #FFFF00;
+  box-shadow: 0 0 6em #ffff33;
+}
+
+.active-green {
+  background-color: #00FF00;
+  box-shadow: 0 0 6em #33ff33;
+}
+
+.btn {
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
