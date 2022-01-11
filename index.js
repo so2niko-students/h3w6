@@ -1,141 +1,139 @@
 "use strict";
 
 // Task 1
-const ipsBetween = (ip1, ip2) => {
-  let count = 0;
-  const aIp1 = ip1.split(".");
-  const aIp2 = ip2.split(".");
-  for (let i = 0; i < 4; i++) {
-    count += (aIp1[i] - aIp2[i]) * 256 ** (3 - i);
+const nameTheNumber = (num) => {
+  const units = [
+    "",
+    "один",
+    "два",
+    "три",
+    "четыре",
+    "пять",
+    "шесть",
+    "семь",
+    "восемь",
+    "девять",
+    "десять",
+    "одиннадцать",
+    "двенадцать",
+    "тринадцать",
+    "четырнадцать",
+    "пятнадцать",
+    "шестнадцать",
+    "семнадцать",
+    "восемнадцать",
+    "девятнадцать",
+  ];
+  const decimals = [
+    "",
+    "",
+    "двадцать",
+    "тридцать",
+    "сорок",
+    "пятьдесят",
+    "шестьдесят",
+    "семьдесят",
+    "восемьдесят",
+    "девяносто",
+  ];
+  const numString = num.toString();
+  if (num === 0) {
+    return `ноль`;
   }
-  return count;
+  if (num < 20) {
+    return units[num];
+  }
+  return decimals[numString[0]] + " " + units[numString[1]];
 };
 
-// Task 2
-const MORSE_CODE = {
-  ".-": "a",
-  "-...": "b",
-  "-.-.": "c",
-  "-..": "d",
-  ".": "e",
-  "..-.": "f",
-  "--.": "g",
-  "....": "h",
-  "..": "i",
-  ".---": "j",
-  "-.-": "k",
-  ".-..": "l",
-  "--": "m",
-  "-.": "n",
-  "---": "o",
-  ".--.": "p",
-  "--.-": "q",
-  ".-.": "r",
-  "...": "s",
-  "-": "t",
-  "..-": "u",
-  "...-": "v",
-  ".--": "w",
-  "-..-": "x",
-  "-.--": "y",
-  "--..": "z",
-  ".----": "1",
-  "..---": "2",
-  "...--": "3",
-  "....-": "4",
-  ".....": "5",
-  "-....": "6",
-  "--...": "7",
-  "---..": "8",
-  "----.": "9",
-  "-----": "0",
-  "|": " ",
+const displayStrStats = (str) => {
+  const letterCount = str.match(/[a-zA-Z]/gi).length;
+  const numberCount = str.match(/[0-9]/gi).length;
+  const specialCharCount = str.match(/[$&+,:;=?@#|'<>.^*()%!-]/gi).length;
+  return `count of letters - ${letterCount}, count of numbers - ${numberCount}, count of special chars - ${specialCharCount}`;
 };
 
-const decodeMorse = (data) => {
-  const words = data.split(" ");
-  return words
-    .map((word) => {
-      return word
-        .split()
-        .map((letter) => MORSE_CODE[letter])
-        .join(" ");
-    })
-    .join("");
+// const replaceLetter = (str) => {
+//   let res = "";
+//   for (let i = 0; i < str.length; i++) {
+//     if (typeof +str[i] === "number") {
+//       console.log(str[i]);
+//       res += "_";
+//     } else {
+//       if (str[i] === str[i].toLowerCase()) {
+//         res += str[i].toUpperCase();
+//       }
+//       if (str[i] === str[i].toUpperCase()) {
+//         res += str[i].toLowerCase();
+//       }
+//     }
+//   }
+//   return res;
+// };
+
+// Task 2 - Traffic lights
+const toggleButton = document.querySelector(".color-toggler");
+const redLight = document.querySelector("#red");
+const yellowLight = document.querySelector("#yellow");
+const greenLight = document.querySelector("#green");
+const lightStates = {
+  red: 0,
+  yellow: 1,
+  green: 2,
 };
+let currentState = lightStates.red;
 
-// Task 3
-function isSolved(board) {
-  function checkHor() {
-    let res;
-    board.forEach(function (item) {
-      if (
-        item[0] == item[1] &&
-        item[0] == item[2] &&
-        item[1] == item[2] &&
-        item[0] != 0
-      )
-        res = item[0];
-    });
-    return res;
-  }
-
-  function checkVer() {
-    for (let i = 0; i < 3; i++) {
-      if (
-        board[0][i] == board[1][i] &&
-        board[1][i] == board[2][i] &&
-        board[2][i] == board[0][i] &&
-        board[0][i] != 0
-      )
-        return board[0][i];
-    }
-  }
-
-  function checkA1() {
-    if (
-      (board[0][0] == board[1][1] &&
-        board[1][1] == board[2][2] &&
-        board[2][2] == board[0][0]) ||
-      (board[0][2] == board[1][1] &&
-        board[1][1] == board[2][0] &&
-        board[2][0] == board[0][2])
-    )
-      return board[1][1];
-  }
-
-  function gameOver() {
-    for (let i = 0; i < 3; i++)
-      for (let j = 0; j < 3; j++) if (board[i][j] == 0) return -1;
-    return 0;
-  }
-
-  return checkHor() || checkVer() || checkA1() || gameOver();
-}
-
-// Task 5
-const tickets = (peopleInLine) => {
-  let a25 = 0;
-  let a50 = 0;
-  for (let i = 0; i < peopleInLine.length; i++) {
-    if (peopleInLine[i] === 25) {
-      a25 += 1;
-    }
-    if (peopleInLine[i] === 50) {
-      a25 -= 1;
-      a50 += 1;
-    }
-    if (peopleInLine[i] === 100) {
-      if (a50 === 0 && a25 >= 3) {
-        a25 -= 3;
-      } else {
-        a25 -= 1;
-        a50 -= 1;
+const changeState = () => {
+  clear();
+  switch (currentState) {
+    case lightStates.red:
+      {
+        redLight.className = "light red";
+        currentState = lightStates.yellow;
       }
-    }
-    if (a25 < 0 || a50 < 0) {
-      return "NO";
-    }
+      break;
+    case lightStates.yellow:
+      {
+        yellowLight.className = "light yellow";
+        currentState = lightStates.green;
+      }
+      break;
+    case lightStates.green:
+      {
+        greenLight.className = "light green";
+        currentState = lightStates.red;
+      }
+      break;
   }
-  return "YES";
 };
+
+toggleButton.onclick = () => {
+  changeState();
+};
+
+const clear = () => {
+  redLight.className = "light off";
+  yellowLight.className = "light off";
+  greenLight.className = "light off";
+};
+
+// Task 3 - Array methods
+
+// ["Яблоко", "Банан", "Ананас"].map((el) => el[0]);
+// ["Я", "Б", "А"]
+
+["Яблоко", "Банан", "Ананас"].reduce((acc, el) => [...acc, el[0]], []);
+
+// ["Яблоко", "Банан", "Ананас"].filter((el) => el[0].toLowerCase() == "а");
+// ["Ананас"]
+
+["Яблоко", "Банан", "Ананас"].reduce((acc, el) => {
+  if (el[0].toLowerCase() === "а") {
+    return [...acc, el];
+  }
+  return acc;
+}, []);
+
+["Яблоко", "Банан", "Ананас"].forEach(
+  (el, i, arr) => (arr[i] = `${i + 1}: ${el};`)
+);
