@@ -74,7 +74,7 @@ console.log(['Яблоко', 'Банан', 'Ананас'].reduce((acc, el) => a
 //['Яблоко', 'Банан', 'Ананас'].filter(el => el[0].toLowerCase() === 'a');
 // > ['Ананас']
 console.log(['Яблоко', 'Банан', 'Ананас'].reduce((acc, el) =>
-   el[0].toLowerCase() === 'а' ? acc + el : acc, ''));
+   el[0].toLowerCase() === 'а' ? [acc + el] : acc, []));
 
 //3
 //['Яблоко', 'Банан', 'Ананас'].forEach((el, i, arr) => arr[i] = `${i + 1}: ${el};`)
