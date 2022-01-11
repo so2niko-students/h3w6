@@ -49,8 +49,8 @@ function informant(string) {
 
 //3
 function replacer(string) {
-   return string.replace(/[A-Za-z]/g, x => String(x).toLowerCase() === x ?
-      String(x).toUpperCase() : String(x).toLowerCase()).replace(/\d/g, '_');
+   return string.replace(/[a-z]/gi, x => x.toLowerCase() === x ?
+      x.toUpperCase() : x.toLowerCase()).replace(/\d/g, '_');
 }
 
 //Task 2
