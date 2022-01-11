@@ -13,7 +13,6 @@ function numbersToWords(number) {
       9: 'девять'
    }
    const dozens = {
-      10: 'десять',
       11: 'одиннадцать',
       12: 'двенадцать',
       13: 'тринадцать',
@@ -23,6 +22,7 @@ function numbersToWords(number) {
       17: 'семьнадцать',
       18: 'восемьнадцать',
       19: 'девятьнадцать',
+      1: 'десять',
       2: 'двадцать',
       3: 'тридцать',
       4: 'сорок',
@@ -32,16 +32,19 @@ function numbersToWords(number) {
       8: 'восемьдесят',
       9: 'девяносто',
    };
-   number = [...'' + number];
-   let result = dozens[number[0]] + ' ' + units[number[1]];
-   return number < 20 ? dozens[number] : result;
+   if (number % 10 === 0) {
+      return dozens[number / 10];
+   }
+   return number < 20 ? dozens[number] :
+      dozens[[...'' + number][0]] + ' ' + units[[...'' + number][1]];;
 }
 
 //2
+const findLength = (str, reg) => str.match(reg)?.length ?? 0;
 function informant(string) {
-   return `Number of letters: ${string.match(/[A-Za-z]/g).length},
-   number of digits: ${string.match(/\d/g).length}, 
-   number of symbols: ${string.match(/[^A-Za-z0-9 ]/g).length}`;
+   return `Number of letters: ${findLength(string, /[A-Za-z]/g)},
+   number of digits: ${findLength(string, /\d/g)}, 
+   number of symbols: ${findLength(string, /[^A-Za-z0-9\s]/g)}`;
 }
 
 //3
@@ -58,10 +61,8 @@ button.addEventListener('click', function () {
    colors.forEach(function (el) {
       el.classList.remove('active')
    })
-   if (i === 3) {
-      i = 0;
-   }
-   colors[i++].classList.add('active')
+  i = (i + 1) % 3;
+  colors[i].classList.add('active')
 })
 
 //Task 3
