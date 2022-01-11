@@ -36,7 +36,7 @@ function numbersToWords(number) {
       return dozens[number / 10];
    }
    return number < 20 ? dozens[number] :
-      dozens[[...'' + number][0]] + ' ' + units[[...'' + number][1]];;
+     dozens[Math.floor(number / 10)] + ' ' + units[number % 10];
 }
 
 //2
