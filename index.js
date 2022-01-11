@@ -14,9 +14,24 @@ function textNumber(number) {
 	  str = str.split('');
 	  let firstNumber = str[0];
 	  let secondNumber = str[1];
+	  if (secondNumber == 0) {
+	  	return `${third[firstNumber - 2]}`
+	  }
 	  return `${third[firstNumber - 2]} ${first[secondNumber]}`;
 	}
 }
+
+console.log(textNumber(0));
+console.log(textNumber(1));
+console.log(textNumber(9));
+console.log(textNumber(10));
+console.log(textNumber(17));
+console.log(textNumber(20));
+console.log(textNumber(30));
+console.log(textNumber(44));
+console.log(textNumber(88));
+console.log(textNumber(90));
+console.log(textNumber(99));
 
 
 function getInfo(str) {
@@ -28,9 +43,9 @@ function getInfo(str) {
 
 
 function replacer(str) {
-	return str.replace(/[A-Za-zА-Яа-я]/g, x => 
-		String(x).toLowerCase() === x ? String(x).toUpperCase() 
-		: String(x).toLowerCase()).replace(/\d/g, '_');
+	return str.replace(/[a-zа-я]/gi, x => 
+		x.toLowerCase() === x ? x.toUpperCase() 
+		: x.toLowerCase()).replace(/\d/g, '_');
 };
 console.log(replacer('Hello World! 1@3, Привет Мир!'));
 
