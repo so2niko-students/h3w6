@@ -87,5 +87,9 @@ console.log(
     .split(" ")
 );
 //SUBTASK 3
-console.log(arr.forEach((el, i, arr) => (arr[i] = `${i + 1}: ${el};`)));
-console.log(arr.reduce((acc, val, i) => acc + ` ${val}`, "").split(" "));
+//console.log(arr.forEach((el, i, arr) => (arr[i] = `${i + 1}: ${el};`)));
+console.log(
+  arr.reduce((acc, element, i) => {
+    return acc.concat(`${i + 1}: ${element}`);
+  }, [])
+);
