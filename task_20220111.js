@@ -1,3 +1,4 @@
+//TASK 1
 class Hex {
   constructor(number) {
     this.number = number;
@@ -30,3 +31,19 @@ class Hex {
 // console.log(a.minus(b).toJSON());
 // console.log(Hex.parse("0xFF"));
 // console.log(Hex.parse("FF"));
+
+//TASK2
+class Dictionary {
+  newEntry(word, entry) {
+    this[word] = entry;
+  }
+  look(word) {
+    return this[word] ?? `Can't find entry for Banana`;
+  }
+}
+let d = new Dictionary();
+d.newEntry("Apple", "A fruit that grows on trees");
+console.log(d.look("Apple"));
+console.log(d.look("Banana"));
+
+//TASK3
