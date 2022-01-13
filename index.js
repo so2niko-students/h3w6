@@ -61,3 +61,32 @@ class Dictionary {
 // d.newEntry("Apple", "A fruit that grows on trees");
 // console.log(d.look("Apple"));
 // console.log(d.look("Banana"));
+
+// Task 3
+class PaginationHelper {
+  constructor(collection, itemsPerPage) {
+    Object.assign(this, { collection, itemsPerPage });
+  }
+
+  itemCount() {
+    return this.collection.length;
+  }
+
+  pageCount() {
+    return Math.ceil(this.collection.length / this.itemsPerPage);
+  }
+
+  pageItemCount(pageIndex) {
+    return pageIndex < 0 || pageIndex >= this.pageCount()
+      ? -1
+      : pageIndex < this.pageCount() - 1
+      ? this.itemsPerPage
+      : this.itemCount() % this.itemsPerPage;
+  }
+
+  pageIndex(itemIndex) {
+    return itemIndex < 0 || itemIndex >= this.itemCount()
+      ? -1
+      : (itemIndex / this.itemsPerPage) ^ 0;
+  }
+}
