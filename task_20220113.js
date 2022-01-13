@@ -23,38 +23,45 @@ class Train {
     return 0;
   }
 }
-let trainsArr = [
+
+class RailwayStation {
+  trains = [];
+  constructor(trains) {
+    this.trains = trains;
+  }
+  addTrain(newTrain) {
+    this.trains = this.trains.concat(newTrain);
+  }
+  showTrainInfo(number) {
+    const res = this.trains.find((train) => train.trainNumber == number);
+    return res ? res.trainInfo() : `No such number, please enter another.`;
+  }
+  sortTrainByNumber() {
+    return this.trains.sort(this.compareNumbers(a, b));
+  }
+  sortTrainByDestinationTime() {
+    return this.trains.sort(this.compareDestination(a, b));
+  }
+
+
+}
+
+let trainsArr = new RailwayStation([
   new Train("Berlin", "1000", "12:05"),
   new Train("Hamburg", "1234", "14:15"),
   new Train("Amsterdam", "420", "04:20"),
   new Train("Paris", "10300", "02:05"),
   new Train("Rome", "4000", "01:05"),
-];
-class RailwayStation extends Train {
-  constructor(trainDestination, trainNumber, trainDeparture, trains) {
-    super(trainDestination, trainNumber, trainDeparture);
-    this.trains = trains;
-  }
-  showTrainsArr() {
-    for (let i = 0; i < this.trains.length; i++) {
-      this.trains[i];
-    }
-  }
-  //   addTrain() {
-  //       this.trains.push(new Train);
-  //   }
-  //   sortTrainByNumber() {
-  //       this.trains.sort
-  //   }
-  //   sortTrainByDestinationTime() {}
-  showTrainInfo() {
-    return this.trainInfo();
-  }
-}
+]);
 
-test = new RailwayStation("Berlin", "1000", "12:05", trainsArr);
-console.log(test.showTrainsArr());
-//console.log(trainsArr[0].trainInfo());
+console.log(trainsArr);
+trainsArr.addTrain(new Train("Kiev", "1433", "14:33"));
+console.log(trainsArr);
+console.log(trainsArr.showTrainInfo(1433));
+console.log(trainsArr.showTrainInfo(14333));
+trainsArr.sortTrainByNumber();
+console.log(trainsArr.trains[5]);
+// console.log(trainsArr.showTrainsArr());
 
 //TASK2
 class Book {
