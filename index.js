@@ -1,138 +1,63 @@
 "use strict";
 
 // Task 1
-const nameTheNumber = (num) => {
-  const units = [
-    "",
-    "один",
-    "два",
-    "три",
-    "четыре",
-    "пять",
-    "шесть",
-    "семь",
-    "восемь",
-    "девять",
-    "десять",
-    "одиннадцать",
-    "двенадцать",
-    "тринадцать",
-    "четырнадцать",
-    "пятнадцать",
-    "шестнадцать",
-    "семнадцать",
-    "восемнадцать",
-    "девятнадцать",
-  ];
-  const decimals = [
-    "",
-    "",
-    "двадцать",
-    "тридцать",
-    "сорок",
-    "пятьдесят",
-    "шестьдесят",
-    "семьдесят",
-    "восемьдесят",
-    "девяносто",
-  ];
-  const numString = num.toString();
-  if (num === 0) {
-    return `ноль`;
+class Hex {
+  constructor(num) {
+    this.num = num;
   }
-  if (num < 20) {
-    return units[num];
+
+  toString() {
+    return "0x" + this.num.toString(16).toUpperCase();
   }
-  return decimals[numString[0]] + " " + units[numString[1]];
-};
 
-const displayStrStats = (str) => {
-  const letterCount = str.match(/[a-zA-Z]/gi).length;
-  const numberCount = str.match(/[0-9]/gi).length;
-  const specialCharCount = str.match(/[$&+,:;=?@#|'<>.^*()%!-]/gi).length;
-  return `count of letters - ${letterCount}, count of numbers - ${numberCount}, count of special chars - ${specialCharCount}`;
-};
-
-const replaceLetter = (str) => {
-  let res = "";
-  for (let i = 0; i < str.length; i++) {
-    if (/\d/gi.test(str[i])) {
-      res += "_";
-    } else {
-      if (str[i] === str[i].toLowerCase()) {
-        res += str[i].toUpperCase();
-      }
-      if (str[i] === str[i].toUpperCase()) {
-        res += str[i].toLowerCase();
-      }
-    }
+  toJSON() {
+    return this.toString();
   }
-  return res;
-};
 
-// Task 2 - Traffic lights
-const toggleButton = document.querySelector(".color-toggler");
-const redLight = document.querySelector("#red");
-const yellowLight = document.querySelector("#yellow");
-const greenLight = document.querySelector("#green");
-const lightStates = {
-  red: 0,
-  yellow: 1,
-  green: 2,
-};
-let currentState = lightStates.red;
-
-const changeState = () => {
-  clear();
-  switch (currentState) {
-    case lightStates.red:
-      {
-        redLight.className = "light red";
-        currentState = lightStates.yellow;
-      }
-      break;
-    case lightStates.yellow:
-      {
-        yellowLight.className = "light yellow";
-        currentState = lightStates.green;
-      }
-      break;
-    case lightStates.green:
-      {
-        greenLight.className = "light green";
-        currentState = lightStates.red;
-      }
-      break;
+  valueOf() {
+    return this.num;
   }
-};
 
-toggleButton.onclick = () => {
-  changeState();
-};
-
-const clear = () => {
-  redLight.className = "light off";
-  yellowLight.className = "light off";
-  greenLight.className = "light off";
-};
-
-// Task 3 - Array methods
-
-// ["Яблоко", "Банан", "Ананас"].map((el) => el[0]);
-// ["Я", "Б", "А"]
-
-["Яблоко", "Банан", "Ананас"].reduce((acc, el) => [...acc, el[0]], []);
-
-// ["Яблоко", "Банан", "Ананас"].filter((el) => el[0].toLowerCase() == "а");
-// ["Ананас"]
-
-["Яблоко", "Банан", "Ананас"].reduce((acc, el) => {
-  if (el[0].toLowerCase() === "а") {
-    return [...acc, el];
+  minus(n) {
+    return new Hex(this.num - n);
   }
-  return acc;
-}, []);
 
-["Яблоко", "Банан", "Ананас"].forEach(
-  (el, i, arr) => (arr[i] = `${i + 1}: ${el};`)
-);
+  plus(n) {
+    return new Hex(this.num + n);
+  }
+
+  static parse(value) {
+    return parseInt(value, 16);
+  }
+}
+
+// var FF = new Hex(255);
+// console.log(FF.toString());
+// console.log(FF.valueOf() + 1);
+
+// const a = new Hex(10);
+// const b = new Hex(5);
+// console.log(a.plus(b).toJSON());
+
+// console.log(Hex.parse("0xFF"));
+// console.log(Hex.parse("FF"));
+
+// Task 2
+class Dictionary {
+  constructor() {
+    this.dict = {};
+  }
+
+  newEntry(key, value) {
+    this.dict[key] = value;
+  }
+
+  look(key) {
+    return this.dict[key] || `Can't find entry for ${key}`;
+  }
+}
+
+// let d = new Dictionary();
+// d.newEntry("Apple", "A fruit that grows on trees");
+// console.log(d.look("Apple"));
+// console.log(d.look("Banana"));
