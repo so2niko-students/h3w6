@@ -88,8 +88,7 @@ removeBook(key, value) {
     }
 
     sortBy(key) {
-        // let atr = atribute
-        this.libraryData.sort((a, b) => a.key > b.key ? 1 : -1);
+        this.libraryData.sort((a, b) => a[key] > b[key] ? 1 : -1);
     }
 
 }
