@@ -1,74 +1,104 @@
-class Hex {
-    constructor(num) {
-        this.num = num;
-        this.hexadecimal = num.toString(16)
+class Train {
+    constructor(finalPoint, numberOfTrain, time) {
+        this.finalPoint = finalPoint;
+        this.numberOfTrain = numberOfTrain;
+        this.time = time
+    }
+}
+
+class RailwayStation {
+    constructor() {
+        this.trains = []
+    }
+    addNewTrain(config) {
+        config.forEach((train) => {
+            this.trains.push(new Train(train[0], train[1], train[2]));
+        })
+    }
+    getTrainInfo(numberOfTrain) {
+        return this.trains.filter((train) => train.numberOfTrain == numberOfTrain)
+    }
+    stationSort() {
+        this.trains.sort((a, b) => a.finalPoint > b.finalPoint ? 1 : -1);
+        this.trains.sort((a, b) => {
+            if (a.finalPoint == b.finalPoint) {
+                return a.time - b.time
+            }
+        })
+    }
+}
+const station = new RailwayStation();
+
+
+station.addNewTrain([
+    ['hit Row', 1, 3],
+    ['Dnipro', 2, 6],
+    ['Krivoe Ragu', 3, 5],
+    ['Dnipro', 5, 4],
+    ['Dnipro', 6, 5],
+    ['1', 7, 5]
+])
+
+// console.log(station.trains)
+// console.log(station.getTrainInfo(2))
+// console.log(station.stationSort())
+
+// console.log(station.trains)
+
+
+
+class Book {
+    constructor(title, author, year, publisher) {
+
+        this.title = title;
+        this.author = author;
+
+        this.year = year;
+
+        this.publisher = publisher;
+
+
+    }
+}
+
+class Library {
+    constructor() {
+        this.libraryData = []
+        this.libraryHelper = {
+            sortedBy: false,
+        }
     }
 
-    static parse(hex) {
-        return parseInt(hex, 16)
+    addNewBook(title, author, year, publisher) {
+        this.libraryData.push(new Book(title, author, year, publisher))
+
     }
 
-    toString() {
-        return `0x${this.hexadecimal.toUpperCase()}`
+    deleteBook(key, value) {
+        this.libraryData.filter((book, index, arr) => {
+            if (book[key] == value) {
+                this.libraryData = [
+                    ...arr.slice(0, index),
+                    ...arr.slice(index + 1, arr.length)
+                ]
+            }
+        })
     }
 
-    valueOf() {
-        return this.num
+    findBookBy(key, value) {
+        return this.libraryData.reduce(function(acc, book) {
+            if (book[key] == value) {
+                acc.push(book)
+            }
+            return acc
+        }, [])
     }
 
-    toJSON() {
-        return this.toString()
-    }
-
-    plus(num) {
-        return new Hex(this.valueOf() + num.valueOf())
-    }
-
-    minus(num) {
-        return new Hex(this.valueOf() - num.valueOf())
+    sortBy(key) {
+        // let atr = atribute
+        this.libraryData.sort((a, b) => a.key > b.key ? 1 : -1);
     }
 
 }
 
-
-class PaginationHelper {
-    constructor(arrayOfitem, itemOnPage) {
-        this.arrayOfitem = arrayOfitem
-        this.itemOnPage = Math.ceil(itemOnPage);
-    }
-
-    pageCount() {
-        return Math.ceil(this.lengthOfArr / this.itemOnPage)
-    }
-
-    itemCount() {
-        return this.lengthOfArr
-    }
-    pageItemCount(page) {
-        let isThatLastPage = this.lengthOfArr - this.itemOnPage * (page);
-        if (isThatLastPage < 0) { return -1 }
-        return isThatLastPage > this.itemOnPage ? this.itemOnPage : isThatLastPage
-    }
-
-    pageIndex(itemIndex) {
-        itemIndex++
-        if (itemIndex < 0 || itemIndex > this.lengthOfArr) return -1
-        return Math.ceil(itemIndex / this.itemOnPage) - 1
-    }
-
-    get lengthOfArr() {
-
-        return this.arrayOfitem.length;
-    }
-}
-
-
-class Dictionary {
-    newEntry(key, value) {
-      this[key] = value;
-    }
-    look(key) {
-      return this[key] || `Can\'t find entry for ${key}`;
-    }
-  }
-
+const library = new Library()
