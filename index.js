@@ -86,6 +86,10 @@ class Library {
 		return this.books = [...this.books,...newBook];
 	}
 
+	deleteBook(name) {
+		this.books = this.books.filter(book => book.name !== name);
+	}
+
 	sortBooksByYear() {
 		return this.books.sort((a, b) => a.year - b.year);
 	}
@@ -106,10 +110,9 @@ const homeLibrary = new Library([
 	new Book('Book3', 'Author3', 2003),
 	new Book('Book4', 'Author4', 2004),
 	new Book('Book5', 'Author5', 2005),
-
-  ]);
+]);
   
-  homeLibrary.addBook([
+homeLibrary.addBook([
 	new Book('Book6', 'Author6', 2006),
 	new Book('Book7', 'Author7', 2007),
 ]);
@@ -121,4 +124,7 @@ homeLibrary.sortBooksByName();
 console.log(homeLibrary.books);
   
 homeLibrary.sortBooksByAuthor();
+console.log(homeLibrary.books);
+
+homeLibrary.deleteBook('Book3');
 console.log(homeLibrary.books);
