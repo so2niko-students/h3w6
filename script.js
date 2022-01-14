@@ -74,15 +74,8 @@ class Library {
 
     }
 
-    deleteBook(key, value) {
-        this.libraryData.filter((book, index, arr) => {
-            if (book[key] == value) {
-                this.libraryData = [
-                    ...arr.slice(0, index),
-                    ...arr.slice(index + 1, arr.length)
-                ]
-            }
-        })
+removeBook(key, value) {
+        this.libraryData = this.libraryData.filter(book => book[key] != value)
     }
 
     findBookBy(key, value) {
