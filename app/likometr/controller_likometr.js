@@ -10,6 +10,7 @@ export default class ControllerLikometr{
         this.pub = new Publisher();
 
         this.pub.subscribe('LIKE', this.handleClickLike);
+        this.view.render(this.model.likes);
     }
 
     handleClickLike = _ => {

@@ -1,8 +1,15 @@
 export default class ModelLikometr{
-    likes = 0;
+    constructor(){
+        this._likes = Number(localStorage.getItem('likes') ?? 0);
+    }
+
+    get likes(){
+        return this._likes;
+    }
     
     incrementLikes = _ => {
-        this.likes += 1;
-        return this.likes;
+        this._likes += 1;
+        localStorage.setItem('likes', this._likes);
+        return this._likes;
     }
 }
