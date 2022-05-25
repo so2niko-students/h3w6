@@ -10,31 +10,36 @@ const loadDoc = (url, func, errFunc = () => console.error('Error in fetching dat
     xhttp.send();
 }
 
-// document.querySelector('.btn_load').addEventListener('click', () => loadDoc('countries.txt', d => {
-//     document.querySelector('#demo').innerText = d;
-// }));
-
-// const cb1 = () => console.log(1);
-// document.querySelector('.btn_load').addEventListener('click', cb1);
-// document.querySelector('.btn_load').addEventListener('click', () => console.log(2));
-// document.querySelector('.btn_load').removeEventListener('click', cb1);
-// document.querySelector('.btn_load').onclick = () => console.log(1);
-// document.querySelector('.btn_load').onclick = () => console.log(2); 
-
-// fetch(url).then(d => { /* щось робимо */})
-
 const myF = url => {
     return new Promise((resolve, reject) => {
         loadDoc(url, resolve, reject);
     });
 };
 
-document.querySelector('.btn_load').addEventListener('click', () => { 
-    myF('countries1.txt')
-        .then(d => {
-            document.querySelector('#demo').innerText = d;
-        })
-        .catch(d => console.error(d));
-});
+const showText = text => {
+    document.querySelector('#demo').innerText = text;
+}
 
+const FILE_PATH = 'countries.txt';
+
+const onClickLoadCountries = () => { 
+    myF(FILE_PATH).then(showText).catch(d => console.error(d));
+}
+
+const onClickLoadCountriesAsync = async () => { 
+    const data = await myF(FILE_PATH);
+    showText(data);
+}
+
+const onClickLoadCountriesFetch = () => { 
+    fetch(FILE_PATH).then(r => r.text()).then(showText);
+}
+
+const onClickLoadCountriesFetchAsync = async () => { 
+    const resp = await fetch(FILE_PATH);
+    const data = await resp.text();
+    showText(data);
+}
+
+document.querySelector('.btn_load').addEventListener('click', onClickLoadCountriesFetchAsync);
 
